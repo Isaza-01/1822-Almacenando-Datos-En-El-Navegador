@@ -132,3 +132,8 @@ form {
 .noTasks {
   font-size: 48px;
 }
+
+.fecha{
+  width: 100%;
+  padding: 2rem;
+}

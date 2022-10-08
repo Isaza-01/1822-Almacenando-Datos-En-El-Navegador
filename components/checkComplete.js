@@ -1,6 +1,6 @@
 //creación del icono de darle check list, o tarea completada
 
-const checkComplete = () => {
+export const checkComplete = () => {
   const i = document.createElement('i');
   i.classList.add('far', 'fa-check-square', 'icon');
   i.addEventListener('click', completeTask);
@@ -16,4 +16,4 @@ const completeTask = (event) => {
   element.classList.toggle('far');
 };
 
-export default checkComplete;
+//export default checkComplete;
