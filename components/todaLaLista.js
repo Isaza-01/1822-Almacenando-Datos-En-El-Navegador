@@ -1,6 +1,7 @@
 
 import {checkComplete} from './checkComplete.js';
 import {deleteIcon} from './deleteIcon.js';
+import {leerLocalStore} from "./leerLocalStore.js";
 
 
  export const todaLaLista= (evento) =>{
@@ -21,28 +22,33 @@ import {deleteIcon} from './deleteIcon.js';
     input.value = "";
     calendario.value = "";
 
+    const tareaCompletada = false;
+
         const estructura_Objet = {
             value,
-            calendarioFormatFecha
+            calendarioFormatFecha,
+            tareaCompletada
         }
     
+        list.innerHTML = "";
+
     const almacenamientoTareas = JSON.parse(localStorage.getItem("tasks")) || [];
             almacenamientoTareas.push(estructura_Objet);
+
     localStorage.setItem("tasks",JSON.stringify(almacenamientoTareas));
     
-    const task = createTask(estructura_Objet);
-
-    list.appendChild(task);
+    leerLocalStore();
 
   }
   
   
-  export const createTask = ({ value,calendarioFormatFecha }) => {
+  export const createTask = ({ value,calendarioFormatFecha,tareaCompletada }) => {
         const task = document.createElement('li');
               task.classList.add('card');
 
     const taskContent = document.createElement('div');
 
+    console.log(tareaCompletada);
     const titleTask = document.createElement('span');
             titleTask.classList.add('task');
             titleTask.innerText = value;
